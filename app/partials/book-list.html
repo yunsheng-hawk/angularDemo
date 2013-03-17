@@ -1,0 +1,18 @@
+  <div>
+    <h1>Search: <input type=text ng-model="query" placeholder="Fulltext search..."/></h1>
+    Order By:
+    <select ng-model="orderProp">
+        <option value="id">Id</option>
+        <option value="name">BookName</option>
+        <option value="author">Author</option>
+    </select>
+    <br/>
+    <ul>
+        <li ng-repeat="book in books | filter:query | orderBy:orderProp">
+            {{book.id}}&emsp;{{book.author}}&emsp;<a href="#/books/{{book.id}}">《{{book.name}}》</a>
+        </li>
+    </ul>
+    Your search key word is (uppercase) : {{query|uppercase}}
+    <br/>
+    Your order by key word is: {{orderProp}}
+  </div>

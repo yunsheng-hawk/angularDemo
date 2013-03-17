@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="demo1.js"></script>
+    <title>Demo title</title>
+  </head>
+  <body ng-controller="DemoCtrl">
+    <p>----------演示简单的Data-Bind/Filter/Order------</p>
+    <p>关键字：ng-app, ng-controller,ng-model,{{}},ng-repeat,...</p>
+    <h1>Search: <input type=text ng-model="query" placeholder="Fulltext search..."/></h1>
+    Order By:
+    <select ng-model="orderProp">
+        <option value="id">Id</option>
+        <option value="name">BookName</option>
+        <option value="author">Author</option>
+    </select>
+    <br/>
+    <ul>
+        <li ng-repeat="book in books | filter:query | orderBy:orderProp">
+            {{book.id}}&emsp;{{book.author}}&emsp;《{{book.name}}》
+        </li>
+    </ul>
+    Total: {{size()}}
+    <br/>
+    Your search key word is : {{query}}
+    <br/>
+    Your order by key word is: {{orderProp}}
+  </body>
+</html>
